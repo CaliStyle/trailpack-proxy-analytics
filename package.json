@@ -1,7 +1,7 @@
 {
   "name": "trailpack-proxy-analytics",
   "version": "0.0.0",
-  "description": "Analytics for Proxy Engine",
+  "description": "Analytics - Trailpack for Proxy Engine",
   "homepage": "http://trailsjs.io",
   "author": {
     "name": "scott-wyatt",
@@ -11,21 +11,21 @@
   "main": "index.js",
   "keywords": [
     "Proxy Engine",
+    "analytics",
     "trailpack",
     "trails",
     "trailjs"
   ],
   "dependencies": {
-    "trailpack": "latest"
+    "trailpack": "v2-latest"
   },
   "devDependencies": {
     "lodash": "^4.11.1",
-    "trails": "latest",
     "eslint": "^2.4",
-    "eslint-config-trails": "^1.0.4",
+    "eslint-config-trails": "^2",
     "mocha": "^2.4.5",
-    "smokesignals": "^1.0.9",
-    "trailpack-core": "^1.0.0-beta-6"
+    "smokesignals": "v2-latest",
+    "trails": "v2-latest"
   },
   "scripts": {
     "test": "eslint . && mocha"
@@ -37,5 +37,5 @@
     "extends": "trails"
   },
   "repository": "git@github.com:CaliStyle/trailpack-proxy-analytics.git",
-  "license": "Apache-2.0"
+  "license": "MIT"
 }

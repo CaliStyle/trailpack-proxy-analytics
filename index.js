@@ -2,7 +2,7 @@
 
 const Trailpack = require('trailpack')
 
-module.exports = class AnalyticsTrailpack extends Trailpack {
+module.exports = class ProxyAnalyticsTrailpack extends Trailpack {
 
   /**
    * TODO document method
