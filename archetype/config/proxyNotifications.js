@@ -1,5 +1,5 @@
 /**
- * Proxy-Analytics Configuration
+ * Proxy-notifications Configuration
  *
  * @see {@link http://
  */
