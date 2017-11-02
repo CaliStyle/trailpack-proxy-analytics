@@ -7,7 +7,7 @@ describe('Trailpack', () => {
   before(() => {
     pack = global.app.packs['proxy-analytics']
   })
-  it('should be loaded into the app.packs collection', () => {
+  it.skip('should be loaded into the app.packs collection', () => {
     assert(pack)
   })
   describe('#validate', () => {

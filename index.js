@@ -1,13 +1,13 @@
 'use strict'
 
 const Trailpack = require('trailpack')
-const lib = require('./lib')
 const _ = require('lodash')
+const lib = require('./lib')
 
-module.exports = class ProxyAnalyticsTrailpack extends Trailpack {
+module.exports = class ProxyNotificationsTrailpack extends Trailpack {
 
   /**
-   * TODO document method
+   * Validates Configs
    */
   validate () {
     // Packs
@@ -30,6 +30,7 @@ module.exports = class ProxyAnalyticsTrailpack extends Trailpack {
     return Promise.all([
       lib.Validator.validateProxyAnalyticsConfig(this.app.config.proxyAnalytics)
     ])
+
   }
 
   /**

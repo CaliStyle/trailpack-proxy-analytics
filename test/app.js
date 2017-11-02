@@ -2,21 +2,82 @@
 
 const _ = require('lodash')
 const smokesignals = require('smokesignals')
+const fs = require('fs')
+const path = require('path')
 
-module.exports = _.defaultsDeep({
-  pkg: {
-    name: require('../package').name + '-test'
+const SERVER = process.env.SERVER || 'express'
+const ORM = process.env.ORM || 'sequelize'
+const DIALECT = process.env.DIALECT || 'sqlite'
+
+const packs = [
+  require('trailpack-router'),
+  require('trailpack-proxy-engine'),
+  require('../') // trailpack-proxy-analytics
+]
+
+let web = {}
+
+const stores = {
+  sqlitedev: {
+    adapter: require('sails-disk')
   },
   api: require('../api'),
+}
+
+if (ORM === 'waterline') {
+  packs.push(require('trailpack-waterline'))
+}
+else if (ORM === 'sequelize') {
+  packs.push(require('trailpack-proxy-sequelize'))
+  if (DIALECT == 'postgres') {
+    stores.sqlitedev = {
+      database: 'ProxyCart',
+      host: '127.0.0.1',
+      dialect: 'postgres'
+    }
+  }
+  else {
+    stores.sqlitedev = {
+      database: 'ProxyCart',
+      storage: './test/test.sqlite',
+      host: '127.0.0.1',
+      dialect: 'sqlite'
+    }
+  }
+}
+
+if ( SERVER == 'express' ) {
+  packs.push(require('trailpack-express'))
+  web = {
+    express: require('express'),
+    middlewares: {
+      order: [
+        'static',
+        'addMethods',
+        'cookieParser',
+        'session',
+        'bodyParser',
+        'methodOverride',
+        'router',
+        'www',
+        '404',
+        '500'
+      ],
+      static: require('express').static('test/static')
+    }
+  }
+}
+
+const App = {
+  api: require('../api'),
+  pkg: {
+    name: 'trailpack-proxy-analytics-test',
+    version: '1.0.0'
+  },
   config: {
+    routes: [],
     main: {
-      packs: [
-        require('trailpack-express'),
-        require('trailpack-router'),
-        require('trailpack-proxy-engine'),
-        require('trailpack-proxy-sequelize'),
-        require('../')
-      ]
+      packs: packs
     },
     proxyAnalytics: {},
     proxyEngine: {
@@ -27,20 +88,32 @@ module.exports = _.defaultsDeep({
       express: require('express')
     },
     database: {
-      stores: {
-        sqlitedev: {
-          database: 'ProxyAnalytics',
-          host: '127.0.0.1',
-          dialect: 'postgres',
-          logging: false
-        }
-      },
+      stores: stores,
       models: {
         defaultStore: 'sqlitedev',
         migrate: 'drop'
       }
+    },
+    policies: {
+      // '*': [ 'CheckPermissions.checkRoute' ]
+    },
+    log: {
+      logger: new smokesignals.Logger('debug')
+    },
+    session: {
+      secret: 'proxyNotifications'
     }
   }
-}, smokesignals.FailsafeConfig)
+}
 
+const dbPath = path.resolve(__dirname, './test.sqlite')
+if (fs.existsSync(dbPath)) {
+  fs.unlinkSync(dbPath)
+}
+const uploadPath = path.resolve(__dirname, './test.uploads.sqlite')
+if (fs.existsSync(uploadPath)) {
+  fs.unlinkSync(uploadPath)
+}
 
+_.defaultsDeep(App, smokesignals.FailsafeConfig)
+module.exports = App

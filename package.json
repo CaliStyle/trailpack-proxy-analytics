@@ -1,7 +1,7 @@
 {
-  "name": "trailpack-proxy-analytics",
+  "name": "trailpack-proxy-notifications",
   "version": "0.0.0",
-  "description": "Analytics - Trailpack for Proxy Engine",
+  "description": "Notifications - Trailpack for Proxy Engine",
   "homepage": "http://trailsjs.io",
   "author": {
     "name": "scott-wyatt",
@@ -11,7 +11,7 @@
   "main": "index.js",
   "keywords": [
     "Proxy Engine",
-    "analytics",
+    "notifications",
     "trailpack",
     "trails",
     "trailjs"
@@ -30,20 +30,20 @@
     "lodash": "^4.11.1",
     "mocha": "^2.4.5",
     "pg": "^6.4.2",
+    "sails-disk": "^0.10.10",
     "smokesignals": "^2.0.0",
     "trailpack-express": "^2.0.3",
-    "trailpack-proxy-sequelize": "^2.1.0",
-    "trails": "^2.0.0"
+    "trailpack-proxy-sequelize": "^2.1.0"
   },
   "scripts": {
     "test": "eslint --fix . && mocha"
   },
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 6.0.0"
   },
   "eslintConfig": {
     "extends": "trails"
   },
-  "repository": "git@github.com:CaliStyle/trailpack-proxy-analytics.git",
+  "repository": "git@github.com:CaliStyle/trailpack-proxy-notifications.git",
   "license": "MIT"
 }
