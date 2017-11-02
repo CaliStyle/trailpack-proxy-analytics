@@ -69,7 +69,9 @@ if ( SERVER == 'express' ) {
 }
 
 const App = {
-  api: require('../api'),
+  api: {
+    analytics: {}
+  },
   pkg: {
     name: 'trailpack-proxy-analytics-test',
     version: '1.0.0'
@@ -101,7 +103,7 @@ const App = {
       logger: new smokesignals.Logger('debug')
     },
     session: {
-      secret: 'proxyNotifications'
+      secret: 'proxyAnalytics'
     }
   }
 }
