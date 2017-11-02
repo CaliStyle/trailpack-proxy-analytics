@@ -17,18 +17,26 @@
     "trailjs"
   ],
   "dependencies": {
-    "trailpack": "v2-latest"
+    "joi": "^10.2.2",
+    "proxy-engine-errors": "^1.0.1",
+    "trailpack": "^2.0.0",
+    "trailpack-proxy-engine": "^2.1.4",
+    "trailpack-router": "^2.1.0"
   },
   "devDependencies": {
+    "eslint": "^3.0.0",
+    "eslint-config-trails": "^2.0.0",
+    "express": "^4.15.2",
     "lodash": "^4.11.1",
-    "eslint": "^2.4",
-    "eslint-config-trails": "^2",
     "mocha": "^2.4.5",
-    "smokesignals": "v2-latest",
-    "trails": "v2-latest"
+    "pg": "^6.4.2",
+    "smokesignals": "^2.0.0",
+    "trailpack-express": "^2.0.3",
+    "trailpack-proxy-sequelize": "^2.1.0",
+    "trails": "^2.0.0"
   },
   "scripts": {
-    "test": "eslint . && mocha"
+    "test": "eslint --fix . && mocha"
   },
   "engines": {
     "node": ">= 4.0.0"
