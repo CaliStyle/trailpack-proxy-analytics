@@ -7,8 +7,4 @@ machine:
     - postgresql
 database:
   override:
-<<<<<<< HEAD
     - createdb ProxyAnalytics
-=======
-    - createdb ProxyNotifications
->>>>>>> origin/master
