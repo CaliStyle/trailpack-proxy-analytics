@@ -31,14 +31,14 @@ else if (ORM === 'sequelize') {
   packs.push(require('trailpack-proxy-sequelize'))
   if (DIALECT == 'postgres') {
     stores.sqlitedev = {
-      database: 'ProxyCart',
+      database: 'ProxyAnalytics',
       host: '127.0.0.1',
       dialect: 'postgres'
     }
   }
   else {
     stores.sqlitedev = {
-      database: 'ProxyCart',
+      database: 'ProxyAnalytics',
       storage: './test/test.sqlite',
       host: '127.0.0.1',
       dialect: 'sqlite'
