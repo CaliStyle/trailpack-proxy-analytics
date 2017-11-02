@@ -1,7 +1,7 @@
 {
-  "name": "trailpack-proxy-notifications",
+  "name": "trailpack-proxy-analytics",
   "version": "0.0.0",
-  "description": "Notifications - Trailpack for Proxy Engine",
+  "description": "Analytics - Trailpack for Proxy Engine",
   "homepage": "http://trailsjs.io",
   "author": {
     "name": "scott-wyatt",
@@ -11,7 +11,7 @@
   "main": "index.js",
   "keywords": [
     "Proxy Engine",
-    "notifications",
+    "analytics",
     "trailpack",
     "trails",
     "trailjs"
@@ -44,6 +44,6 @@
   "eslintConfig": {
     "extends": "trails"
   },
-  "repository": "git@github.com:CaliStyle/trailpack-proxy-notifications.git",
+  "repository": "git@github.com:CaliStyle/trailpack-proxy-analytics.git",
   "license": "MIT"
 }
